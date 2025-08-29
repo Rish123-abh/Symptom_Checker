@@ -20,7 +20,7 @@ symptoms	string	Example: "headache, fever"
 import axios from "axios";
 
 const API_BASE_URL = "https://symptom-checker-r1zn.onrender.com";
-
+```
 async function getDiseasePrediction(symptoms: string) {
   try {
     const response = await axios.get(
@@ -32,11 +32,13 @@ async function getDiseasePrediction(symptoms: string) {
     console.error("❌ Error fetching prediction:", error);
   }
 }
+```
 
 // Example usage
 getDiseasePrediction("headache");
 
 📄 Example Response
+```
 {
   "symptoms": ["headache"],
   "possibleDiseases": [
@@ -47,7 +49,7 @@ getDiseasePrediction("headache");
     { "disease": "Cluster Headache", "probability": "1.02" }
   ]
 }
-
+```
 ⚠️ Notes
 
 Ensure the symptoms parameter is passed as a string of symptoms separated by commas.
@@ -65,6 +67,7 @@ Provides suggestions for symptoms while typing, useful for autocomplete in the f
 Parameter	Type	Description
 q	string	Partial input of symptom(s), comma-separated. Example: "hea, fe"
 ⚡ Example Request (Using Axios)
+```
 import axios from "axios";
 
 const API_BASE_URL = "https://symptom-checker-r1zn.onrender.com";
@@ -80,16 +83,18 @@ async function getSymptomSuggestions(query: string) {
     console.error("❌ Error fetching suggestions:", error);
   }
 }
-
+```
 // Example usage
 getSymptomSuggestions("hea, fe"); // might return ["headache", "fever"]
 
 📄 Example Response
+```
 [
   "headache",
   "fever",
   "heartburn"
 ]
+```
 
 
 Returns an array of matching symptoms based on the partial input.
