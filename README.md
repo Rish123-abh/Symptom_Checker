@@ -1,14 +1,14 @@
 🩺 Symptom-to-Disease Prediction API
 
-This project provides a backend API that predicts possible diseases based on a given list of symptoms. The API returns a list of potential diseases along with their associated probabilities.
+This project provides backend APIs to predict possible diseases based on symptoms and to suggest symptoms while typing.
 
 🌐 Base URL
 https://symptom-checker-r1zn.onrender.com
 
-📌 Endpoint
+1️⃣ Disease Prediction API
 GET /predictDisease
 
-Predicts diseases based on provided symptoms.
+Predicts possible diseases based on the symptoms provided.
 
 🔹 Query Parameters
 
@@ -23,7 +23,7 @@ const API_BASE_URL = "https://symptom-checker-r1zn.onrender.com";
 
 async function getDiseasePrediction(symptoms: string) {
   try {
-    const response = await axios.get<DiseasePredictionResponse>(
+    const response = await axios.get(
       `${API_BASE_URL}/predictDisease`,
       { params: { symptoms } }
     );
@@ -48,11 +48,6 @@ getDiseasePrediction("headache");
   ]
 }
 
-
-symptoms: The string of symptoms provided in the request (comma-separated).
-
-possibleDiseases: Array of predicted diseases with probability (in %).
-
 ⚠️ Notes
 
 Ensure the symptoms parameter is passed as a string of symptoms separated by commas.
@@ -61,13 +56,11 @@ Probabilities indicate the likelihood of each disease based on the given symptom
 
 This API is for informational purposes only and should not replace professional medical advice.
 
-
-
-🔍 Symptoms Suggestion API
-
-While typing symptoms, this API provides suggestions based on the input to help users select valid symptoms.
-
+2️⃣ Symptoms Suggestion API
 GET /symptoms/search
+
+Provides suggestions for symptoms while typing, useful for autocomplete in the frontend.
+
 🔹 Query Parameters
 Parameter	Type	Description
 q	string	Partial input of symptom(s), comma-separated. Example: "hea, fe"
